@@ -21,6 +21,7 @@ export interface ListProps {
   onLoadMore?: React.FormEventHandler<any>;
   pagination?: any;
   prefixCls?: string;
+  noHovering: boolean;
   style?: React.CSSProperties;
 }
 
@@ -36,6 +37,7 @@ export default class List extends Component<ListProps> {
       itemLayout,
       showLoadMore = false,
       loadingMore = false,
+      noHovering = false,
       onLoadMore = (() => {
       }),
       pagination = false,
@@ -46,6 +48,7 @@ export default class List extends Component<ListProps> {
       [`${prefixCls}-vertical`]: itemLayout === 'vertical',
       [`${prefixCls}-bordered`]: bordered,
       [`${prefixCls}-loading`]: loading,
+      [`${prefixCls}-hovering`]: !noHovering,
     });
 
     const moreButton = (
@@ -77,7 +80,7 @@ export default class List extends Component<ListProps> {
       <div className={classString}>
         {loading && loadingContent}
         {!loading && children}
-        {showLoadMore && moreContent}
+        {!loading && showLoadMore && moreContent}
         {(!showLoadMore && pagination) && paginationContent}
       </div>
     );

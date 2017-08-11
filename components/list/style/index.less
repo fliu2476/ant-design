@@ -23,14 +23,6 @@
     display: flex;
     padding-top: 24px;
     padding-bottom: 24px;
-    &:hover {
-      .@{list-prefix-cls}-item-meta-title {
-        color: @primary-color;
-        a {
-          color: @primary-color;
-        }
-      }
-    }
     &-meta {
       align-items: center;
       display: flex;
@@ -146,6 +138,19 @@
       }
       & > li:first-child {
         padding-left: 0;
+      }
+    }
+  }
+}
+
+.@{list-prefix-cls}-hovering {
+  .@{list-prefix-cls}-item {
+    &:hover {
+      .@{list-prefix-cls}-item-meta-title {
+        color: @primary-color;
+        a {
+          color: @primary-color;
+        }
       }
     }
   }
